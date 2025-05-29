@@ -3,8 +3,11 @@ import type { SortConfig, User } from "../../types";
 import { UserFilter } from "../../components/users/UserFilter";
 import { UserTable } from "../../components/users/UserTable";
 import { Pagination } from "../../components/ui/Pagination";
+import { SearchBar } from "../../components/ui/SearchBar";
 
 const ListUsers = () => {
+  const { searchTerm, setSearchTerm } = useUsers();
+
   const {
     loading,
     filters,
@@ -35,6 +38,11 @@ const ListUsers = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <SearchBar
+          value={searchTerm}
+          onChange={setSearchTerm}
+          placeholder="Search by name or email..."
+        />
         <UserFilter filters={filters} onFilterChange={setFilters} />
       </div>
 

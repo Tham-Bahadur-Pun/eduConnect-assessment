@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { userService } from "../../services/userServices";
-import { LuArrowLeft, LuBuilding } from "react-icons/lu";
 import { FaUserEdit } from "react-icons/fa";
-import type { User } from "../../types";
+import React, { useEffect, useState } from "react";
+import { LuArrowLeft, LuBuilding } from "react-icons/lu";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
 import { Avatar } from "../../components/ui/Avatar";
-import { StatusBadge } from "../../components/ui/StatusBadge";
+import { Loader } from "../../components/ui/Loader";
 import { RoleBadge } from "../../components/ui/RoleBadge";
 import { UserForm } from "../../components/users/UserForm";
-import { Loader } from "../../components/ui/Loader";
+import { StatusBadge } from "../../components/ui/StatusBadge";
+
+import type { User } from "../../types";
 import { useUsers } from "../../context/UserContext";
+import { userService } from "../../services/userServices";
 
 const UserDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -91,7 +93,7 @@ const UserDetailPage: React.FC = () => {
         <p className="text-red-800 dark:text-red-200">{error}</p>
         <Link
           to="/users"
-          className="mt-4 inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
+          className="mt-4 inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
         >
           <LuArrowLeft size={16} className="mr-1" /> Back to Users
         </Link>
@@ -109,7 +111,7 @@ const UserDetailPage: React.FC = () => {
         <div className="flex items-center space-x-4">
           <button
             onClick={() => navigate("/users")}
-            className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer"
             aria-label="Back to users"
           >
             <LuArrowLeft
@@ -125,7 +127,7 @@ const UserDetailPage: React.FC = () => {
         {!isEditing && (
           <button
             onClick={handleEdit}
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="inline-flex items-center px-4 py-2 border border-transparent cursor-pointer rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             <FaUserEdit size={16} className="mr-2" /> Edit User
           </button>
@@ -177,7 +179,7 @@ const UserDetailPage: React.FC = () => {
             </div>
 
             <dl>
-              <div className="bg-gray-50 dark:bg-gray-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <div className="bg-gray-50 dark:bg-gray-900 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt className="flex items-center text-sm font-medium text-gray-500 dark:text-gray-400">
                   <LuBuilding size={16} className="mr-2" />
                   Department

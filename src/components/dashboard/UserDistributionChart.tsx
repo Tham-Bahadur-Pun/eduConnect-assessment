@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { Chart, registerables } from 'chart.js';
+import { Chart, registerables } from "chart.js";
+import React, { useEffect, useRef, useState } from "react";
 
-// Register all Chart.js components
 Chart.register(...registerables);
 
 interface UserDistributionProps {
@@ -9,28 +8,28 @@ interface UserDistributionProps {
     labels: string[];
     values: number[];
   };
-  type?: 'pie' | 'doughnut' | 'bar';
+  type?: "pie" | "doughnut" | "bar";
 }
 
 export const UserDistributionChart: React.FC<UserDistributionProps> = ({
   data,
-  type = 'doughnut'
+  type = "doughnut",
 }) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const chartInstance = useRef<Chart | null>(null);
-  
+  const [themeKey, setThemeKey] = useState(0); // 👈 Key to force chart update on theme change
+
   useEffect(() => {
     if (chartRef.current) {
-      // Destroy previous chart instance if it exists
       if (chartInstance.current) {
         chartInstance.current.destroy();
       }
-      
-      // Get the context of the canvas
-      const ctx = chartRef.current.getContext('2d');
-      
+
+      const ctx = chartRef.current.getContext("2d");
+
       if (ctx) {
-        // Create the chart
+        const isDark = document.documentElement.classList.contains("dark");
+
         chartInstance.current = new Chart(ctx, {
           type,
           data: {
@@ -39,18 +38,18 @@ export const UserDistributionChart: React.FC<UserDistributionProps> = ({
               {
                 data: data.values,
                 backgroundColor: [
-                  'rgba(59, 130, 246, 0.7)', // blue
-                  'rgba(16, 185, 129, 0.7)', // green
-                  'rgba(249, 115, 22, 0.7)', // orange
-                  'rgba(168, 85, 247, 0.7)', // purple
-                  'rgba(239, 68, 68, 0.7)', // red
+                  "rgba(59, 130, 246, 0.7)",
+                  "rgba(16, 185, 129, 0.7)",
+                  "rgba(249, 115, 22, 0.7)",
+                  "rgba(168, 85, 247, 0.7)",
+                  "rgba(239, 68, 68, 0.7)",
                 ],
                 borderColor: [
-                  'rgba(59, 130, 246, 1)',
-                  'rgba(16, 185, 129, 1)',
-                  'rgba(249, 115, 22, 1)',
-                  'rgba(168, 85, 247, 1)',
-                  'rgba(239, 68, 68, 1)',
+                  "rgba(59, 130, 246, 1)",
+                  "rgba(16, 185, 129, 1)",
+                  "rgba(249, 115, 22, 1)",
+                  "rgba(168, 85, 247, 1)",
+                  "rgba(239, 68, 68, 1)",
                 ],
                 borderWidth: 1,
               },
@@ -61,19 +60,19 @@ export const UserDistributionChart: React.FC<UserDistributionProps> = ({
             maintainAspectRatio: false,
             plugins: {
               legend: {
-                position: 'bottom',
+                position: "bottom",
                 labels: {
-                  font: {
-                    size: 12,
-                  },
-                  color: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#374151',
+                  font: { size: 12 },
+                  color: isDark ? "#f3f4f6" : "#374151",
                 },
               },
               tooltip: {
-                backgroundColor: document.documentElement.classList.contains('dark') ? '#374151' : 'rgba(255, 255, 255, 0.9)',
-                titleColor: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#111827',
-                bodyColor: document.documentElement.classList.contains('dark') ? '#d1d5db' : '#4b5563',
-                borderColor: document.documentElement.classList.contains('dark') ? '#4b5563' : '#e5e7eb',
+                backgroundColor: isDark
+                  ? "#374151"
+                  : "rgba(255, 255, 255, 0.9)",
+                titleColor: isDark ? "#f3f4f6" : "#111827",
+                bodyColor: isDark ? "#d1d5db" : "#4b5563",
+                borderColor: isDark ? "#4b5563" : "#e5e7eb",
                 borderWidth: 1,
                 padding: 10,
                 displayColors: true,
@@ -84,47 +83,29 @@ export const UserDistributionChart: React.FC<UserDistributionProps> = ({
         });
       }
     }
-    
-    // Clean up chart instance on component unmount
+
     return () => {
       if (chartInstance.current) {
         chartInstance.current.destroy();
       }
     };
-  }, [data, type]);
-  
-  // Update chart when theme changes
+  }, [data, type, themeKey]); // 👈 themeKey dependency added
+
   useEffect(() => {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (
-          mutation.type === 'attributes' &&
-          mutation.attributeName === 'class' &&
-          mutation.target === document.documentElement
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
         ) {
-          // Redraw the chart when theme changes
-          if (chartInstance.current) {
-            chartInstance.current.destroy();
-            // Trigger re-render by updating a state variable
-            // or directly recreate the chart
-            const ctx = chartRef.current?.getContext('2d');
-            if (ctx) {
-              // Recreate the chart with the new theme colors
-              // This is a simplified version, you'd need to recreate with the same config
-              // Re-creating the chart triggers the useEffect above
-              chartRef.current?.click();
-            }
-          }
+          setThemeKey((prev) => prev + 1); // 👈 Trigger chart re-render
         }
       });
     });
-    
-    // Start observing the document with the configured parameters
+
     observer.observe(document.documentElement, { attributes: true });
-    
-    return () => {
-      observer.disconnect();
-    };
+
+    return () => observer.disconnect();
   }, []);
 
   return (

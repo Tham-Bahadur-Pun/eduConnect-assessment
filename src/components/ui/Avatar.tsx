@@ -1,23 +1,22 @@
-import React from 'react';
+import React from "react";
 import { FaUser } from "react-icons/fa";
 
 interface AvatarProps {
   src: string;
   name: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ 
-  src, 
+export const Avatar: React.FC<AvatarProps> = ({
+  src,
   name,
-  size = 'medium'
+  size = "medium",
 }) => {
   const sizeClasses = {
-    small: 'h-8 w-8',
-    medium: 'h-10 w-10',
-    large: 'h-16 w-16',
+    small: "h-8 w-8",
+    medium: "h-10 w-10",
+    large: "h-16 w-16",
   };
-  
 
   const [hasError, setHasError] = React.useState(false);
 
@@ -26,7 +25,9 @@ export const Avatar: React.FC<AvatarProps> = ({
   };
 
   return (
-    <div className={`${sizeClasses[size]} relative rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700`}>
+    <div
+      className={`${sizeClasses[size]} relative rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700`}
+    >
       {!hasError && src ? (
         <img
           src={src}
