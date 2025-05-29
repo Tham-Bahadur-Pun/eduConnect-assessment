@@ -9,6 +9,7 @@ import { StatusBadge } from "../../components/ui/StatusBadge";
 import { RoleBadge } from "../../components/ui/RoleBadge";
 import { UserForm } from "../../components/users/UserForm";
 import { Loader } from "../../components/ui/Loader";
+import { useUsers } from "../../context/UserContext";
 
 const UserDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -18,6 +19,8 @@ const UserDetailPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+
+  const { setFilteredUsers, filteredUsers } = useUsers();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -58,6 +61,11 @@ const UserDetailPage: React.FC = () => {
       setUser(result);
       setIsEditing(false);
       setSaveSuccess(true);
+
+      const newFilteredUsers = filteredUsers.map((u) =>
+        u.id === result.id ? result : u
+      );
+      setFilteredUsers(newFilteredUsers);
 
       // Clear success message after 3 seconds
       setTimeout(() => {

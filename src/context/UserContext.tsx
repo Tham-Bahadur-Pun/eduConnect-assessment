@@ -1,9 +1,10 @@
-import React, {
+import {
   createContext,
   useState,
   useContext,
   useEffect,
   type ReactNode,
+  useMemo,
 } from "react";
 import type { User, FilterOptions, SortConfig } from "../types";
 import { userService } from "../services/userServices";
@@ -28,6 +29,7 @@ interface UserContextType {
   setCurrentPage: (page: number) => void;
   setItemsPerPage: (count: number) => void;
   getCurrentPageUsers: () => User[];
+  setFilteredUsers: (users: User[]) => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -105,32 +107,46 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     return filteredUsers.slice(startIndex, endIndex);
   };
 
+  const contextValue = useMemo(
+    () => ({
+      users,
+      filteredUsers,
+      loading,
+      error,
+      searchTerm,
+      filters,
+      sortConfig,
+      pagination: {
+        currentPage,
+        totalPages,
+        itemsPerPage,
+      },
+      fetchUsers,
+      setSearchTerm,
+      setFilters,
+      setSortConfig,
+      setCurrentPage,
+      setItemsPerPage,
+      getCurrentPageUsers,
+      setFilteredUsers,
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [
+      searchTerm,
+      filters,
+      sortConfig,
+      currentPage,
+      fetchUsers,
+      setSearchTerm,
+      setFilters,
+      setSortConfig,
+      setCurrentPage,
+      setItemsPerPage,
+    ]
+  );
+
   return (
-    <UserContext.Provider
-      value={{
-        users,
-        filteredUsers,
-        loading,
-        error,
-        searchTerm,
-        filters,
-        sortConfig,
-        pagination: {
-          currentPage,
-          totalPages,
-          itemsPerPage,
-        },
-        fetchUsers,
-        setSearchTerm,
-        setFilters,
-        setSortConfig,
-        setCurrentPage,
-        setItemsPerPage,
-        getCurrentPageUsers,
-      }}
-    >
-      {children}
-    </UserContext.Provider>
+    <UserContext.Provider value={contextValue}>{children}</UserContext.Provider>
   );
 };
 

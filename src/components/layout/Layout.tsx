@@ -1,7 +1,7 @@
-import React from 'react';
-import { Header } from './Header';
-import { Sidebar } from './Sidebar';
-import { MobileMenu } from './MobileMenu';
+import React from "react";
+import { Header } from "./Header";
+import { Sidebar } from "./Sidebar";
+import { MobileMenu } from "./MobileMenu";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-800 transition-colors">
+    <div className="h-screen bg-gray-50 dark:bg-gray-800 transition-colors">
       <Header />
       <div className="flex">
         <Sidebar />

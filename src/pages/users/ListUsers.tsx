@@ -1,5 +1,5 @@
 import { useUsers } from "../../context/UserContext";
-import type { User } from "../../types";
+import type { SortConfig, User } from "../../types";
 import { UserFilter } from "../../components/users/UserFilter";
 import { UserTable } from "../../components/users/UserTable";
 import { Pagination } from "../../components/ui/Pagination";
@@ -16,22 +16,15 @@ const ListUsers = () => {
     getCurrentPageUsers,
   } = useUsers();
 
-  const handleSort = (key: keyof User) => {
-    setSortConfig((prevConfig) => {
-      if (prevConfig?.key === key) {
-        return {
-          key,
-          direction: prevConfig.direction === "asc" ? "desc" : "asc",
-        };
-      }
-      return {
-        key,
-        direction: "asc",
-      };
-    });
-  };
-
   const users = getCurrentPageUsers();
+
+  const handleSort = (key: keyof User) => {
+    const newConfig: SortConfig =
+      sortConfig?.key === key
+        ? { key, direction: sortConfig.direction === "asc" ? "desc" : "asc" }
+        : { key, direction: "asc" };
+    setSortConfig(newConfig);
+  };
 
   return (
     <div className="space-y-6">

@@ -120,10 +120,10 @@ export const userService = {
           return sortConfig.direction === 'asc' ? comparison : -comparison;
         }
 
-        if (aValue < bValue) {
+        if (aValue! < bValue!) {
           return sortConfig.direction === 'asc' ? -1 : 1;
         }
-        if (aValue > bValue) {
+        if (aValue! > bValue!) {
           return sortConfig.direction === 'asc' ? 1 : -1;
         }
         return 0;
