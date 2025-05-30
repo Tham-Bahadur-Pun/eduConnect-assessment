@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FiRefreshCcw } from "react-icons/fi";
-import { FaHome } from "react-icons/fa";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FiRefreshCcw } from 'react-icons/fi';
+import { FaHome } from 'react-icons/fa';
 
 export const NotFoundPage: React.FC = () => {
   return (

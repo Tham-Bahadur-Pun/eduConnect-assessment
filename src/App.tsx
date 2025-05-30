@@ -3,15 +3,15 @@ import {
   Routes,
   Route,
   Navigate,
-} from "react-router-dom";
-import "./App.css";
-import { ThemeProvider } from "./context/ThemeContext";
-import { Suspense } from "react";
-import { Loader } from "./components/ui/Loader";
-import routes from "./routes";
-import { NotFoundPage } from "./pages/NotFoundPage";
-import { Layout } from "./components/layout/Layout";
-import { UserProvider } from "./context/UserContext";
+} from 'react-router-dom';
+import './App.css';
+import { ThemeProvider } from './context/ThemeContext';
+import { Suspense } from 'react';
+import { Loader } from './components/ui/Loader';
+import routes from './routes';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { Layout } from './components/layout/Layout';
+import { UserProvider } from './context/UserContext';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
               <Routes>
                 {routes.map((route, index) => (
                   <Route
-                    key={index}
+                    key={index + 'route'}
                     path={route.path}
                     element={route.element}
                   />

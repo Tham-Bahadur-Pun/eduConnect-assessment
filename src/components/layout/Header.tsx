@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { PiUsersThreeFill } from "react-icons/pi";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { PiUsersThreeFill } from 'react-icons/pi';
 
-import { ThemeToggle } from "../ui/ThemeToggle";
+import { ThemeToggle } from '../ui/ThemeToggle';
 
 export const Header: React.FC = () => {
   return (

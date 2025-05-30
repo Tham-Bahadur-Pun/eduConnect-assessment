@@ -1,7 +1,7 @@
-import React from "react";
-import { LuArrowUp, LuArrowDown, LuArrowUpDown } from "react-icons/lu";
+import React from 'react';
+import { LuArrowUp, LuArrowDown, LuArrowUpDown } from 'react-icons/lu';
 
-import type { SortDirection } from "../../types";
+import type { SortDirection } from '../../types';
 
 interface SortButtonProps {
   label: string;
@@ -21,14 +21,14 @@ export const SortButton: React.FC<SortButtonProps> = ({
       onClick={onClick}
       className={`inline-flex items-center px-2 py-1 rounded text-sm ${
         active
-          ? "font-medium text-blue-600 dark:text-blue-400 hover:cursor-pointer"
-          : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 hover:cursor-pointer"
+          ? 'font-medium text-blue-600 dark:text-blue-400 hover:cursor-pointer'
+          : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 hover:cursor-pointer'
       }`}
     >
       {label}
       <span className="ml-1">
         {active ? (
-          direction === "asc" ? (
+          direction === 'asc' ? (
             <LuArrowUp size={14} className="text-blue-600 dark:text-blue-400" />
           ) : (
             <LuArrowDown

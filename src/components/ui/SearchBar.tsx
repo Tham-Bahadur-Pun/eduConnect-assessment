@@ -1,5 +1,5 @@
-import React from "react";
-import { LuSearch } from "react-icons/lu";
+import React from 'react';
+import { LuSearch } from 'react-icons/lu';
 
 interface SearchBarProps {
   value: string;
@@ -10,7 +10,7 @@ interface SearchBarProps {
 export const SearchBar: React.FC<SearchBarProps> = ({
   value,
   onChange,
-  placeholder = "Search users...",
+  placeholder = 'Search users...',
 }) => {
   return (
     <div className="relative">

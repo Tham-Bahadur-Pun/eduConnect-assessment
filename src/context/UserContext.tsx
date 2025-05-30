@@ -5,9 +5,9 @@ import {
   useEffect,
   type ReactNode,
   useMemo,
-} from "react";
-import type { User, FilterOptions, SortConfig } from "../types";
-import { userService } from "../services/userServices";
+} from 'react';
+import type { User, FilterOptions, SortConfig } from '../types';
+import { userService } from '../services/userServices';
 
 interface UserContextType {
   users: User[];
@@ -43,7 +43,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState<FilterOptions>({
     role: [],
     status: [],
@@ -60,7 +60,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
       setFilteredUsers(data);
       setError(null);
     } catch (err) {
-      setError("Failed to fetch users");
+      setError('Failed to fetch users');
       console.error(err);
     } finally {
       setLoading(false);
@@ -82,7 +82,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
         // Reset to first page when filters change
         setCurrentPage(1);
       } catch (err) {
-        setError("Error applying filters");
+        setError('Error applying filters');
         console.error(err);
       } finally {
         setLoading(false);
@@ -153,7 +153,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 export const useUsers = (): UserContextType => {
   const context = useContext(UserContext);
   if (context === undefined) {
-    throw new Error("useUsers must be used within a UserProvider");
+    throw new Error('useUsers must be used within a UserProvider');
   }
   return context;
 };

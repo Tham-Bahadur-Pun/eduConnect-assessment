@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import { IoIosClose } from "react-icons/io";
-import { MdFilterListAlt } from "react-icons/md";
+import React, { useState, useEffect, useRef } from 'react';
+import { IoIosClose } from 'react-icons/io';
+import { MdFilterListAlt } from 'react-icons/md';
 
 interface FilterOption {
   value: string;
@@ -47,9 +47,9 @@ export const FilterSelect: React.FC<FilterSelectProps> = ({
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -61,8 +61,8 @@ export const FilterSelect: React.FC<FilterSelectProps> = ({
         className={`inline-flex items-center justify-center rounded-md border px-3 py-2 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors cursor-pointer
           ${
             selectedValues.length > 0
-              ? "bg-blue-50 text-blue-700 border-blue-300 hover:bg-blue-100 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700 dark:hover:bg-blue-800"
-              : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50 dark:bg-blue-900 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-blue-900/30"
+              ? 'bg-blue-50 text-blue-700 border-blue-300 hover:bg-blue-100 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700 dark:hover:bg-blue-800'
+              : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50 dark:bg-blue-900 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-blue-900/30'
           }
         `}
       >

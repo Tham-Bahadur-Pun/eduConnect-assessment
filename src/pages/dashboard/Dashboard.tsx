@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { FaUserCheck, FaUserFriends, FaUserTimes } from "react-icons/fa";
-import { RiAdminFill } from "react-icons/ri";
+import { useEffect, useState } from 'react';
+import { FaUserCheck, FaUserFriends, FaUserTimes } from 'react-icons/fa';
+import { RiAdminFill } from 'react-icons/ri';
 import {
   StatCard,
   type StatCardProps,
-} from "../../components/dashboard/StatCard";
-import { UserDistributionChart } from "../../components/dashboard/UserDistributionChart";
-import { Loader } from "../../components/ui/Loader";
-import { userService } from "../../services/userServices";
-import type { UserStats } from "../../types";
+} from '../../components/dashboard/StatCard';
+import { UserDistributionChart } from '../../components/dashboard/UserDistributionChart';
+import { Loader } from '../../components/ui/Loader';
+import { userService } from '../../services/userServices';
+import type { UserStats } from '../../types';
 
 const Dashboard = () => {
   const [stats, setStats] = useState<UserStats | null>(null);
@@ -23,8 +23,8 @@ const Dashboard = () => {
         setStats(data);
         setError(null);
       } catch (err) {
-        console.error("Failed to fetch user stats:", err);
-        setError("Failed to load dashboard data. Please try again later.");
+        console.error('Failed to fetch user stats:', err);
+        setError('Failed to load dashboard data. Please try again later.');
       } finally {
         setLoading(false);
       }
@@ -54,7 +54,7 @@ const Dashboard = () => {
   }
 
   const chartData = {
-    labels: ["Admins", "Editors", "Users"],
+    labels: ['Admins', 'Editors', 'Users'],
     values: [
       stats.roleDistribution.admin,
       stats.roleDistribution.editor,
@@ -64,29 +64,29 @@ const Dashboard = () => {
 
   const statData: StatCardProps[] = [
     {
-      title: "Total Users",
+      title: 'Total Users',
       value: stats.totalUsers,
       icon: FaUserFriends,
-      color: "blue",
+      color: 'blue',
     },
 
     {
-      title: "Active Users",
+      title: 'Active Users',
       value: stats.activeUsers,
       icon: FaUserCheck,
-      color: "green",
+      color: 'green',
     },
     {
-      title: "Inactive Users",
+      title: 'Inactive Users',
       value: stats.inactiveUsers,
       icon: FaUserTimes,
-      color: "red",
+      color: 'red',
     },
     {
-      title: "Admin Users",
+      title: 'Admin Users',
       value: stats.roleDistribution.admin,
       icon: RiAdminFill,
-      color: "purple",
+      color: 'purple',
     },
   ];
   return (
@@ -103,7 +103,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {statData.map((stat, index) => (
           <StatCard
-            key={index}
+            key={index + 'stat'}
             title={stat.title}
             value={stat.value}
             icon={stat.icon}

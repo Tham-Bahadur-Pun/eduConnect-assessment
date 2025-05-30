@@ -1,39 +1,39 @@
-import React from "react";
-import type { IconType } from "react-icons";
+import React from 'react';
+import type { IconType } from 'react-icons';
 
 export interface StatCardProps {
   title: string;
   value: number | string;
   icon: IconType;
-  color?: "blue" | "green" | "red" | "purple" | "yellow";
+  color?: 'blue' | 'green' | 'red' | 'purple' | 'yellow';
 }
 
 export const StatCard: React.FC<StatCardProps> = ({
   title,
   value,
   icon: Icon,
-  color = "blue",
+  color = 'blue',
 }) => {
   const colorClasses = {
     blue: {
-      bg: "bg-blue-100 dark:bg-blue-900",
-      text: "text-blue-600 dark:text-blue-300",
+      bg: 'bg-blue-100 dark:bg-blue-900',
+      text: 'text-blue-600 dark:text-blue-300',
     },
     green: {
-      bg: "bg-green-100 dark:bg-green-900",
-      text: "text-green-600 dark:text-green-300",
+      bg: 'bg-green-100 dark:bg-green-900',
+      text: 'text-green-600 dark:text-green-300',
     },
     red: {
-      bg: "bg-red-100 dark:bg-red-900",
-      text: "text-red-600 dark:text-red-300",
+      bg: 'bg-red-100 dark:bg-red-900',
+      text: 'text-red-600 dark:text-red-300',
     },
     purple: {
-      bg: "bg-purple-100 dark:bg-purple-900",
-      text: "text-purple-600 dark:text-purple-300",
+      bg: 'bg-purple-100 dark:bg-purple-900',
+      text: 'text-purple-600 dark:text-purple-300',
     },
     yellow: {
-      bg: "bg-yellow-100 dark:bg-yellow-900",
-      text: "text-yellow-600 dark:text-yellow-300",
+      bg: 'bg-yellow-100 dark:bg-yellow-900',
+      text: 'text-yellow-600 dark:text-yellow-300',
     },
   };
 

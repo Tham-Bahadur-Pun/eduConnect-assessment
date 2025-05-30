@@ -12,7 +12,7 @@ export interface User {
   };
   joinDate?: string;
   lastActive?: string;
-  
+
 }
 
 export interface DummyJSONResponse {

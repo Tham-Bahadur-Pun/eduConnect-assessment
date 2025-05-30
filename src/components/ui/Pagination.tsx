@@ -1,5 +1,5 @@
-import React from "react";
-import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import React from 'react';
+import { LuChevronLeft, LuChevronRight } from 'react-icons/lu';
 
 interface PaginationProps {
   currentPage: number;
@@ -38,7 +38,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       pages.push(1);
 
       if (currentPage > 3) {
-        pages.push("...");
+        pages.push('...');
       }
 
       // Determine range around current page
@@ -50,7 +50,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       }
 
       if (currentPage < totalPages - 2) {
-        pages.push("...");
+        pages.push('...');
       }
 
       pages.push(totalPages);
@@ -67,8 +67,8 @@ export const Pagination: React.FC<PaginationProps> = ({
           disabled={currentPage === 1}
           className={`relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md ${
             currentPage === 1
-              ? "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed"
-              : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+              : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700'
           }`}
         >
           Previous
@@ -78,8 +78,8 @@ export const Pagination: React.FC<PaginationProps> = ({
           disabled={currentPage === totalPages}
           className={`ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md ${
             currentPage === totalPages
-              ? "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed"
-              : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+              : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700'
           }`}
         >
           Next
@@ -96,8 +96,8 @@ export const Pagination: React.FC<PaginationProps> = ({
               disabled={currentPage === 1}
               className={`relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 dark:border-gray-600 text-sm font-medium ${
                 currentPage === 1
-                  ? "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed"
-                  : "bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700"
+                  ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+                  : 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
               }`}
             >
               <span className="sr-only">Previous</span>
@@ -105,21 +105,21 @@ export const Pagination: React.FC<PaginationProps> = ({
             </button>
 
             {getPageNumbers().map((page, index) =>
-              typeof page === "number" ? (
+              typeof page === 'number' ? (
                 <button
-                  key={index}
+                  key={index + 'page'}
                   onClick={() => handlePageChange(page)}
                   className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium hover:cursor-pointer ${
                     currentPage === page
-                      ? "z-10 bg-blue-50 dark:bg-blue-900 border-blue-500 dark:border-blue-500 text-blue-600 dark:text-blue-200"
-                      : "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700"
+                      ? 'z-10 bg-blue-50 dark:bg-blue-900 border-blue-500 dark:border-blue-500 text-blue-600 dark:text-blue-200'
+                      : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
                   }`}
                 >
                   {page}
                 </button>
               ) : (
                 <span
-                  key={index}
+                  key={index + 'page'}
                   className="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
                   ...
@@ -132,8 +132,8 @@ export const Pagination: React.FC<PaginationProps> = ({
               disabled={currentPage === totalPages}
               className={`relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 dark:border-gray-600 text-sm font-medium ${
                 currentPage === totalPages
-                  ? "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed"
-                  : "bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700"
+                  ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+                  : 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700'
               }`}
             >
               <span className="sr-only">Next</span>

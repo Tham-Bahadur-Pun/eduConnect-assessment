@@ -1,7 +1,7 @@
-import React from "react";
-import { Header } from "./Header";
-import { Sidebar } from "./Sidebar";
-import { MobileMenu } from "./MobileMenu";
+import React from 'react';
+import { Header } from './Header';
+import { Sidebar } from './Sidebar';
+import { MobileMenu } from './MobileMenu';
 
 interface LayoutProps {
   children: React.ReactNode;

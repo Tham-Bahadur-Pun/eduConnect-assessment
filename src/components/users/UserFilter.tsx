@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import type { FilterOptions } from "../../types";
-import { FilterSelect } from "../ui/FilterSelect";
+import type { FilterOptions } from '../../types';
+import { FilterSelect } from '../ui/FilterSelect';
 
 interface UserFilterProps {
   filters: FilterOptions;
@@ -27,15 +27,15 @@ export const UserFilter: React.FC<UserFilterProps> = ({
   };
 
   const roleOptions = [
-    { value: "admin", label: "Admin" },
-    { value: "editor", label: "Editor" },
-    { value: "user", label: "User" },
+    { value: 'admin', label: 'Admin' },
+    { value: 'editor', label: 'Editor' },
+    { value: 'user', label: 'User' },
   ];
 
   const statusOptions = [
-    { value: "active", label: "Active" },
-    { value: "inactive", label: "Inactive" },
-    { value: "pending", label: "Pending" },
+    { value: 'active', label: 'Active' },
+    { value: 'inactive', label: 'Inactive' },
+    { value: 'pending', label: 'Pending' },
   ];
 
   return (

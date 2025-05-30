@@ -1,9 +1,9 @@
-import { useUsers } from "../../context/UserContext";
-import type { SortConfig, User } from "../../types";
-import { UserFilter } from "../../components/users/UserFilter";
-import { UserTable } from "../../components/users/UserTable";
-import { Pagination } from "../../components/ui/Pagination";
-import { SearchBar } from "../../components/ui/SearchBar";
+import { useUsers } from '../../context/UserContext';
+import type { SortConfig, User } from '../../types';
+import { UserFilter } from '../../components/users/UserFilter';
+import { UserTable } from '../../components/users/UserTable';
+import { Pagination } from '../../components/ui/Pagination';
+import { SearchBar } from '../../components/ui/SearchBar';
 
 const ListUsers = () => {
   const { searchTerm, setSearchTerm } = useUsers();
@@ -24,8 +24,8 @@ const ListUsers = () => {
   const handleSort = (key: keyof User) => {
     const newConfig: SortConfig =
       sortConfig?.key === key
-        ? { key, direction: sortConfig.direction === "asc" ? "desc" : "asc" }
-        : { key, direction: "asc" };
+        ? { key, direction: sortConfig.direction === 'asc' ? 'desc' : 'asc' }
+        : { key, direction: 'asc' };
     setSortConfig(newConfig);
   };
 

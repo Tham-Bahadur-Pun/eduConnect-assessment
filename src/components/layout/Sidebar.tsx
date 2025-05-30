@@ -1,9 +1,9 @@
-import React from "react";
-import { FaHome } from "react-icons/fa";
-import { HiUsers } from "react-icons/hi";
-import { Link, useLocation } from "react-router-dom";
+import React from 'react';
+import { FaHome } from 'react-icons/fa';
+import { HiUsers } from 'react-icons/hi';
+import { Link, useLocation } from 'react-router-dom';
 
-import routePaths from "../../routes/routePaths";
+import routePaths from '../../routes/routePaths';
 
 export const Sidebar: React.FC = () => {
   const location = useLocation();
@@ -13,8 +13,8 @@ export const Sidebar: React.FC = () => {
   };
 
   const navigationItems = [
-    { name: "Dashboard", path: routePaths.dashboard, icon: FaHome },
-    { name: "Users", path: routePaths.listUsers, icon: HiUsers },
+    { name: 'Dashboard', path: routePaths.dashboard, icon: FaHome },
+    { name: 'Users', path: routePaths.listUsers, icon: HiUsers },
   ];
 
   return (
@@ -31,15 +31,15 @@ export const Sidebar: React.FC = () => {
                   to={item.path}
                   className={`w-full group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                     active
-                      ? "bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-200"
-                      : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800"
+                      ? 'bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-200'
+                      : 'text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800'
                   }`}
                 >
                   <Icon
                     className={`mr-3 h-5 w-5 ${
                       active
-                        ? "text-blue-500 dark:text-blue-400"
-                        : "text-gray-500 dark:text-gray-400"
+                        ? 'text-blue-500 dark:text-blue-400'
+                        : 'text-gray-500 dark:text-gray-400'
                     }`}
                   />
                   {item.name}

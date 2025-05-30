@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Loader } from "../ui/Loader";
-import { RoleBadge } from "../ui/RoleBadge";
-import { SortButton } from "../ui/SortButton";
-import { StatusBadge } from "../ui/StatusBadge";
-import { Avatar as UserAvatar } from "../ui/Avatar";
+import { Loader } from '../ui/Loader';
+import { RoleBadge } from '../ui/RoleBadge';
+import { SortButton } from '../ui/SortButton';
+import { StatusBadge } from '../ui/StatusBadge';
+import { Avatar as UserAvatar } from '../ui/Avatar';
 
-import type { User, SortConfig } from "../../types";
+import type { User, SortConfig } from '../../types';
 
 interface UserTableProps {
   users: User[];
@@ -57,9 +57,9 @@ export const UserTable: React.FC<UserTableProps> = ({
             >
               <SortButton
                 label="Role"
-                active={sortConfig?.key === "role"}
+                active={sortConfig?.key === 'role'}
                 direction={sortConfig?.direction}
-                onClick={() => onSort("role")}
+                onClick={() => onSort('role')}
               />
             </th>
             <th
@@ -68,9 +68,9 @@ export const UserTable: React.FC<UserTableProps> = ({
             >
               <SortButton
                 label="Status"
-                active={sortConfig?.key === "status"}
+                active={sortConfig?.key === 'status'}
                 direction={sortConfig?.direction}
-                onClick={() => onSort("status")}
+                onClick={() => onSort('status')}
               />
             </th>
           </tr>
